@@ -2,17 +2,21 @@ import "dotenv/config";
 import sequelize from "./config/db.js";
 import { User } from "./models/index.js";
 
+const email = "sokolorachaelgospel@gmail.com";
+const password = "veltrixnet"; // see the note below about changing this
+
 const run = async () => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
 
-    const email = "sokolorachaelgospel@gmail.com"; // change to your email
-    const password = "veltrixnet"; // change before running
+    const user = await User.scope("withPassword").findOne({ where: { email } });
 
-    const exists = await User.findOne({ where: { email } });
-    if (exists) {
-      console.log("Admin already exists");
+    if (user) {
+      user.password = password; // hashed automatically on save
+      user.role = "admin";
+      await user.save();
+      console.log(`Admin updated: ${email}`);
     } else {
       await User.create({
         name: "VeltrixNet Admin",
