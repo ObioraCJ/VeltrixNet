@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
-import api from "../api/api";
+import { useState } from "react";
+import Hero from "../components/Hero";
+import Packages from "../components/Packages";
+import Contact from "../components/Contact";
+import InterestModal from "../components/InterestModal";
 
 const Home = () => {
-  const [packages, setPackages] = useState([]);
-
-  useEffect(() => {
-    api.get("/packages").then((res) => setPackages(res.data.packages));
-  }, []);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-4xl font-bold">Home page (coming in Step 7)</h1>
-      <p className="mt-4 text-slate-600">
-        Packages loaded from the API: <b>{packages.length}</b>
-      </p>
-      <ul className="mt-4 list-disc pl-6">
-        {packages.map((p) => (
-          <li key={p.id}>
-            {p.name} {p.speed}Mbps: ₦{p.finalPrice.toLocaleString()}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Hero onExpressInterest={() => setModalOpen(true)} />
+      <Packages />
+      <Contact />
+      <InterestModal open={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
   );
 };
 

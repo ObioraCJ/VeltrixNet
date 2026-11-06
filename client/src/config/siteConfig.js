@@ -1,6 +1,6 @@
 const siteConfig = {
   brandName: "VeltrixNet",
-  tagline: "Fibre Deep, Reach Wide",
+  tagline: "Fast Fibre for Every Home",
   phone: "07059713619",
   whatsappLink: "https://wa.me/2347059713619",
   email: "sokolorachaelgospel@gmail.com",
