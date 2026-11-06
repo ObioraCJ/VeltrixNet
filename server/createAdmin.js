@@ -7,8 +7,8 @@ const run = async () => {
     await sequelize.authenticate();
     await sequelize.sync();
 
-    const email = "obiorachukwuemekaj@gmail.com"; // change to your email
-    const password = "ChangeThisPassword123"; // change before running
+    const email = "sokolorachaelgospel@gmail.com"; // change to your email
+    const password = "veltrixnet"; // change before running
 
     const exists = await User.findOne({ where: { email } });
     if (exists) {
