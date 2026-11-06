@@ -5,6 +5,8 @@ import { connectDB } from "./config/db.js";
 import "./models/index.js"; // registers models and relationships before sync
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import packageRoutes from "./routes/packageRoutes.js";
+import interestRoutes from "./routes/interestRoutes.js";
 
 connectDB();
 
@@ -20,6 +22,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/packages", packageRoutes);
+app.use("/api/interest", interestRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "VeltrixNet API is running" });
