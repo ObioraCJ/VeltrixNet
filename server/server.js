@@ -9,6 +9,7 @@ import packageRoutes from "./routes/packageRoutes.js";
 import interestRoutes from "./routes/interestRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 connectDB();
 
@@ -28,6 +29,7 @@ app.use("/api/packages", packageRoutes);
 app.use("/api/interest", interestRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "VeltrixNet API is running" });
